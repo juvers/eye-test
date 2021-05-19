@@ -50,15 +50,15 @@ function App() {
   useEffect(() => {
     if ((computeScores(lottery, player1.scores)).includes(true)) {
       alert("Player 1 has won");
-       setDisabler(true);
+      setDisabler(true);
     }
     if ((computeScores(lottery, player2.scores)).includes(true)) {
       alert("Player 2 has won");
-      setDisabler(true);
+      setTimeout(() => setDisabler(true), 0)
     }
     if (player1.scores.length + player2.scores.length === 9) {
       const answer = window.confirm("would you like to replay? ");
-      if (answer) reset();
+      answer && reset();
     }
   }, [lottery, player1, player1.scores, player2.scores, reset])
   return (
